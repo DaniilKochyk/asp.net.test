@@ -1,0 +1,23 @@
+﻿    @{
+
+    }
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Index</title>
+    </head>
+    <body>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <p>Jesteś zalogowany pod loginem: @User.Identity.Name</p>
+        }
+
+
+        <div class="div-box">
+            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post">
+                <input type="submit" value="Wyloguj się" />
+            </form>
+    </body>
+</html>

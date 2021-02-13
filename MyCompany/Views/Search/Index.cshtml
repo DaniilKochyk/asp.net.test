@@ -1,0 +1,51 @@
+﻿@model List<ServiceItem>
+@{
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <h1>Uslugi</h1>
+    <form asp-controller="Search" asp-action="Index">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <input type="text" id="postTitle" name="postTitle" class="btn btn-outline-primary" placeholder="Wpisz nazwę" />
+                <button class="btn btn-outline-primary" id="postTitle" type="submit">Szukaj</button>
+            </div>
+        </div>
+    </form>
+    @if (Model.Any())
+    {
+        <ul class="big-image-list">
+            @foreach (ServiceItem entity in Model)
+            {
+                <li>
+                    <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
+                        <img src="~/images/@entity.TitleImagePath" alt="" class="left" />
+                    </a>
+                    <h4>@entity.Title</h4>
+                    <p>@entity.Subtitle</p>
+                </li>
+            }
+        </ul>
+    }
+</body>
+</html>
+
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#postTitle").autocomplete({
+                source: 'api/postapi/search'
+            })
+        })
+    </script>
+}

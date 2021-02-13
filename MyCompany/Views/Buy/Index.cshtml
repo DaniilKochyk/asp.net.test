@@ -1,0 +1,36 @@
+﻿@model ServiceItem 
+@{
+    ViewBag.Title = "Zamówienie";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+    <div>
+        <h3>Zamówienie </h3>
+        <p>Proszę wypełnić następne:</p>
+        <form method="post">
+            <input type="hidden" value="@ViewBag.Id" name="Id" />
+            <table>
+                <tr>
+                    <td>Imię:</td>
+                    <td><input type="text" name="UserOrd" value=@User.Identity.Name>  </td>
+                </tr>
+                <tr>
+                    <td>Adres:</td>
+                    <td><input type="text" name="Address" /></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" name="EmailOrd"></td>
+                </tr>
+                <tr><td><input type="submit" value="Wysłać" id="Send" /> </td><td></td></tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
+
